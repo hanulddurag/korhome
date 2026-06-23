@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>오션중학교 국어교사 랜딩페이지</title>
+    <!-- 안정적인 Tailwind CSS 로드 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -28,7 +29,7 @@
             object-fit: contain;
         }
 
-        /* 상세 설명 서서히 나타나는 애니메이션 */
+        /* 서서히 나타나는 애니메이션 */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
@@ -44,9 +45,8 @@
     <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-6">
         <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <!-- Logo Image and Text (Clicking dynamically shows Guide and hides Classroom) -->
                 <a href="#about-section" onclick="showAboutSection(event)" class="flex items-center gap-3 group">
-                    <img src="./imge/logo.png" alt="오션 국어 교실 로고" class="logo-img transition-transform group-hover:scale-105" onerror="this.parentElement.querySelector('img').style.display='none'">
+                    <img src="./imge/logo.png" alt="오션 국어 교실 로고" class="logo-img transition-transform group-hover:scale-105" onerror="this.style.display='none'">
                     <span id="nav-text" class="nav-text font-bold text-xl md:text-2xl tracking-tight text-white transition-colors group-hover:text-blue-200">
                         오션 국어 교실
                     </span>
@@ -73,10 +73,8 @@
                 안녕하세요. 오션중학교에서 학생들과 함께<br>따뜻하고 배움이 살아있는 국어 수업을 만들어가는 국어교사입니다.
             </p>
             
-            <!-- 교과 분류 버튼 세트 + 질문하기 버튼 통합 레이아웃 -->
             <div class="flex flex-col gap-6 items-center w-full max-w-5xl mx-auto">
                 <div class="flex flex-wrap gap-3 justify-center w-full">
-                    <!-- 교과 분류 버튼 (Clicking dynamically shows Classroom and hides Guide) -->
                     <button onclick="navigateSubject('literature')" class="px-5 py-4 bg-white text-blue-700 rounded-xl font-bold hover:bg-blue-50 transition-all shadow-md flex items-center gap-2 hover:scale-105 transform active:scale-95">
                         <i class="fa-solid fa-feather-pointed text-blue-500"></i> 문학
                     </button>
@@ -90,7 +88,6 @@
                         <i class="fa-solid fa-pen-nib text-blue-500"></i> 읽기-쓰기
                     </button>
                     
-                    <!-- 질문하기 버튼 -->
                     <a href="https://script.google.com/macros/s/AKfycbzZsZ8QR9v0GTnmQiH0Cb0CG_7i_dHTddx8u8EHGMl-XV2zWHVtKaOxrrSzoGfWf9601g/exec" target="_blank" class="px-8 py-4 bg-amber-400 text-slate-900 rounded-xl font-bold hover:bg-amber-300 transition-all shadow-lg flex items-center justify-center gap-2 hover:scale-105 transform active:scale-95">
                         <i class="fa-solid fa-comment-dots text-slate-800"></i> 질문하기
                     </a>
@@ -99,7 +96,7 @@
         </div>
     </section>
 
-    <!-- 안내 및 교과서 안내 Section (기본 표출, 학년 구분 선택 시 숨김 처리됨) -->
+    <!-- 안내 및 교과서 안내 Section -->
     <section id="about-section" class="py-24 px-6 max-w-4xl mx-auto scroll-mt-24 transition-all duration-350">
         <div class="bg-white p-10 md:p-14 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300">
             <div class="flex flex-col items-center text-center">
@@ -119,56 +116,40 @@
         </div>
     </section>
 
-    <!-- 인터랙티브 국어 교과 학습 학습관 (평소에는 숨겨져 있다가 교과 버튼 클릭 시 표출됨) -->
+    <!-- 인터랙티브 국어 교과 학습 학습관 -->
     <section id="classroom-section" class="hidden py-24 bg-slate-100/80 border-t border-b border-slate-200/50 scroll-mt-24 transition-all duration-350">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-blue-700 font-bold text-sm tracking-wider uppercase bg-blue-100 px-4 py-1.5 rounded-full">교과 탐색관</span>
                 <h2 class="text-4xl font-extrabold text-slate-900 mt-4">교과별 학년 맞춤 학습관</h2>
-                <p class="text-slate-600 mt-3 text-lg">학년을 선택한 후, <span class="text-blue-600 font-bold">원하는 단원 버튼을 클릭</span>하여 연계 온라인 학습 서비스 및 개념 문제를 체험해보세요!</p>
+                <p class="text-slate-600 mt-3 text-lg">학년을 선택한 후, <span class="text-blue-600 font-bold">원하는 단원 버튼을 클릭</span>하여 연계 온라인 학습 서비스를 체험해보세요!</p>
             </div>
 
-            <!-- 메인 플레이스홀더 제어 보드 -->
             <div class="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden min-h-[520px]">
-                
-                <!-- 전체 패널: 학년 구분 버튼 + 맞춤형 세부 학습 안내 판넬 -->
                 <div class="p-8 md:p-12 flex flex-col justify-between bg-white h-full relative">
-                    <!-- 영역 안내 라벨 이동 배치 -->
                     <div class="absolute top-8 right-8 text-xs text-slate-400 hidden md:block">
                         <i class="fa-solid fa-circle-question text-blue-500 mr-1"></i> 비상교육 교과서 성취 기준 준수
                     </div>
 
                     <div>
-                        <!-- 학년 구분 탭 버튼 -->
+                        <!-- 학년 선택 버튼 -->
                         <div class="flex items-center gap-3 border-b border-slate-100 pb-6 mb-8 overflow-x-auto">
                             <span class="text-sm font-bold text-slate-500 mr-2 shrink-0">학년 선택 :</span>
-                            <button onclick="setGrade(1)" id="grade-btn-1" class="px-5 py-2.5 rounded-full font-bold text-sm bg-blue-600 text-white transition-all shadow-md">
-                                1학년
-                            </button>
-                            <button onclick="setGrade(2)" id="grade-btn-2" class="px-5 py-2.5 rounded-full font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
-                                2학년
-                            </button>
-                            <button onclick="setGrade(3)" id="grade-btn-3" class="px-5 py-2.5 rounded-full font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
-                                3학년
-                            </button>
+                            <button onclick="setGrade(1)" id="grade-btn-1" class="px-5 py-2.5 rounded-full font-bold text-sm bg-blue-600 text-white transition-all shadow-md">1학년</button>
+                            <button onclick="setGrade(2)" id="grade-btn-2" class="px-5 py-2.5 rounded-full font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">2학년</button>
+                            <button onclick="setGrade(3)" id="grade-btn-3" class="px-5 py-2.5 rounded-full font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">3학년</button>
                         </div>
 
-                        <!-- 동적 학습 콘텐츠 렌더링 영역 -->
+                        <!-- 동적 콘텐츠 렌더링 영역 -->
                         <div id="content-box" class="space-y-6 animate-fade-in">
                             <div class="flex items-center gap-3">
-                                <span id="content-tag" class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-md">오션중 1학년 주력 과정</span>
-                                <span id="content-subject" class="text-sm text-blue-700 font-extrabold tracking-wider bg-blue-50 px-3 py-1 rounded-md">문학</span>
+                                <span id="content-tag" class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-md"></span>
+                                <span id="content-subject" class="text-sm text-blue-700 font-extrabold tracking-wider bg-blue-50 px-3 py-1 rounded-md"></span>
                             </div>
                             
-                            <h3 id="content-title" class="text-2xl md:text-3xl font-extrabold text-slate-800">
-                                1학년: 시의 목소리와 소설의 갈등
-                            </h3>
-                            
-                            <p id="content-desc" class="text-slate-600 leading-relaxed text-base">
-                                비상교과서 핵심 단원을 중심으로 시의 아름다운 표현 기법(비유, 상징)을 배우고, 소설 속 인물들의 갈등 양상을 파악하며 타인의 마음에 깊이 공감하는 능력을 키웁니다.
-                            </p>
+                            <h3 id="content-title" class="text-2xl md:text-3xl font-extrabold text-slate-800"></h3>
+                            <p id="content-desc" class="text-slate-600 leading-relaxed text-base"></p>
 
-                            <!-- 비상교과서 주요 단원 목록 -->
                             <div class="pt-4 border-t border-slate-100">
                                 <h5 class="text-sm font-bold text-slate-800 mb-4"><i class="fa-solid fa-laptop-code text-blue-600 mr-1.5"></i> 클릭 시 연계 디지털 학습 페이지 이동 및 성취 퀴즈 팝업</h5>
                                 <ul id="content-chapters" class="grid gap-3">
@@ -178,17 +159,13 @@
                         </div>
                     </div>
 
-                    <!-- 영역별 추가 안내 및 상담용 다이렉트 앵커 링크 -->
                     <div class="mt-12 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-                        <p class="text-sm text-slate-500 text-center sm:text-left">
-                            공부하다가 헷갈리는 질문이 있나요? 질문방에 즉시 남겨주세요!
-                        </p>
+                        <p class="text-sm text-slate-500 text-center sm:text-left">공부하다가 헷갈리는 질문이 있나요? 질문방에 즉시 남겨주세요!</p>
                         <a href="https://script.google.com/macros/s/AKfycbzZsZ8QR9v0GTnmQiH0Cb0CG_7i_dHTddx8u8EHGMl-XV2zWHVtKaOxrrSzoGfWf9601g/exec" target="_blank" class="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 transition-colors font-bold text-slate-900 rounded-xl text-sm flex items-center gap-2">
                             <i class="fa-solid fa-comment-dots"></i> 질문 바로쓰기
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -196,20 +173,18 @@
     <!-- Interactive Learning Modal (동적 모달 학습기) -->
     <div id="learning-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden px-4">
         <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden border border-slate-100 animate-fade-in">
-            <!-- Modal Header -->
             <div class="bg-gradient-to-r from-blue-700 to-indigo-800 p-6 text-white flex justify-between items-center">
                 <div class="flex items-center gap-3">
                     <div class="bg-white/20 p-2.5 rounded-xl"><i class="fa-solid fa-graduation-cap text-xl"></i></div>
                     <div>
-                        <span class="text-xs text-blue-200 font-bold uppercase tracking-wider" id="modal-subtitle">문법 학습관</span>
-                        <h4 class="text-xl font-extrabold" id="modal-title">단원명</h4>
+                        <span class="text-xs text-blue-200 font-bold uppercase tracking-wider" id="modal-subtitle"></span>
+                        <h4 class="text-xl font-extrabold" id="modal-title"></h4>
                     </div>
                 </div>
                 <button onclick="closeModal()" class="text-white/80 hover:text-white transition-colors text-2xl p-1"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <!-- Modal Body -->
             <div class="p-8 space-y-6 max-h-[70vh] overflow-y-auto">
-                <!-- 선생님 전용 커스텀 앱 연결 배너 구역 (appUrl이 있을 때만 활성화) -->
+                
                 <div id="teacher-app-banner" class="hidden bg-gradient-to-r from-emerald-500 to-teal-600 p-5 rounded-2xl text-white shadow-md flex flex-col sm:flex-row justify-between items-center gap-4">
                     <div class="flex items-center gap-3.5">
                         <div class="bg-white/20 p-2 rounded-xl text-2xl"><i class="fa-solid fa-mobile-screen-button"></i></div>
@@ -223,7 +198,6 @@
                     </a>
                 </div>
 
-                <!-- 선생님 전용 커스텀 앱 준비 중 배너 구역 (appUrl이 없을 때 자동 활성화) -->
                 <div id="teacher-app-ready-banner" class="bg-slate-100 p-5 rounded-2xl text-slate-700 border border-slate-200 flex items-center gap-3.5">
                     <div class="bg-slate-200 p-2 rounded-xl text-xl text-slate-500"><i class="fa-solid fa-hourglass-half"></i></div>
                     <div>
@@ -234,63 +208,25 @@
 
                 <div class="space-y-2">
                     <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-extrabold rounded">핵심 성취 요약</span>
-                    <p class="text-slate-600 text-sm leading-relaxed" id="modal-desc">
-                        해당 단원의 핵심 성취기준 요약 텍스트 영역입니다.
-                    </p>
+                    <p class="text-slate-600 text-sm leading-relaxed" id="modal-desc"></p>
                 </div>
                 
-                <!-- 성취도 체크 미니 퀴즈 영역 -->
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                     <span class="text-xs text-emerald-700 font-bold uppercase tracking-wider block mb-2"><i class="fa-solid fa-square-poll-vertical"></i> 단원 자가 성취도 퀴즈</span>
-                    <h5 class="font-bold text-slate-800 mb-4 text-base" id="modal-quiz-q">여기에 퀴즈 질문이 들어갑니다.</h5>
-                    <div class="space-y-2.5" id="modal-quiz-options">
-                        <!-- 옵션들이 동적으로 채워집니다 -->
-                    </div>
+                    <h5 class="font-bold text-slate-800 mb-4 text-base" id="modal-quiz-q"></h5>
+                    <div class="space-y-2.5" id="modal-quiz-options"></div>
                     <div id="quiz-feedback" class="mt-4 text-sm font-bold hidden p-3.5 rounded-xl text-center"></div>
-                </div>
-
-                <!-- 외부 연계 학습 통합 링크 버튼 -->
-                <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
-                    <a id="btn-external-ebs" href="https://mid.ebs.co.kr" target="_blank" class="flex-1 py-3.5 px-6 bg-slate-100 text-slate-800 text-center font-bold text-sm rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-globe text-blue-600"></i> EBS 중학 국어 학습관 연계
-                    </a>
-                    <a id="btn-external-visang" href="https://www.vivasam.com" target="_blank" class="flex-1 py-3.5 px-6 bg-blue-600 text-white text-center font-bold text-sm rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20">
-                        <i class="fa-solid fa-book-open"></i> 비상교육 비바샘 연계
-                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer / Contact -->
+    <!-- Footer -->
     <footer class="bg-slate-900 text-white py-20 px-6">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
             <div class="space-y-4">
                 <h2 class="text-3xl font-bold text-blue-400">오션 국어 교실</h2>
-                <p class="text-slate-400 max-w-sm">
-                    부산광역시 강서구 명지동 오션중학교<br>
-                    본관 2층 1학년 교무실
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-auto">
-                <div class="flex items-center gap-4 group cursor-pointer">
-                    <div class="bg-slate-800 p-4 rounded-full group-hover:bg-blue-600 transition-colors">
-                        <i class="fa-solid fa-envelope text-xl"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm text-slate-400 font-medium uppercase tracking-wider">이메일 문의</p>
-                        <p class="text-lg">teacher@ocean.ms.kr</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4 group cursor-pointer">
-                    <div class="bg-slate-800 p-4 rounded-full group-hover:bg-blue-600 transition-colors">
-                        <i class="fa-solid fa-location-dot text-xl"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm text-slate-400 font-medium uppercase tracking-wider">위치</p>
-                        <p class="text-lg">오션중학교 교무실</p>
-                    </div>
-                </div>
+                <p class="text-slate-400 max-w-sm">부산광역시 강서구 명지동 오션중학교<br>본관 2층 1학년 교무실</p>
             </div>
         </div>
         <div class="max-w-6xl mx-auto border-t border-slate-800 mt-16 pt-8 text-center text-slate-500 text-sm">
@@ -299,10 +235,10 @@
     </footer>
 
     <script>
-        // 현재 연도 설정
+        // 현재 연도
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // 내비게이션 바 스크롤 로직
+        // 내비게이션 바 스크롤
         const navbar = document.getElementById('navbar');
         const navText = document.getElementById('nav-text');
 
@@ -318,491 +254,314 @@
             }
         });
 
-        // 인터랙티브 데이터 베이스 (비상교육 교과서 성취기준 및 단원 가이드 전면 연동)
+        // ----------------------------------------------------
+        // 데이터 베이스 (비상교육 교과서 성취기준 연동)
+        // ----------------------------------------------------
         const subjectData = {
             literature: {
-                title: "문학 (Literature)",
-                icon: "fa-feather-pointed",
+                title: "문학 (Literature)", icon: "fa-feather-pointed",
                 grades: {
                     1: {
-                        title: "1학년 문학: 정서와 갈등의 탐색",
-                        desc: "비상교과서 핵심 단원을 기반으로 합니다. 시에 담긴 음악적 정서(운율, 비유, 상징)를 음미하고 소설 속 갈등 양상을 파악하며 자아의 성장을 도모합니다.",
+                        title: "1학년 문학: 정서와 갈등의 탐색", tag: "오션중 1학년 과정",
+                        desc: "비상교과서 핵심 단원을 기반으로 시에 담긴 음악적 정서(운율, 비유, 상징)를 음미하고 소설 속 갈등 양상을 파악하며 자아의 성장을 도모합니다.",
                         chapters: [
                             { name: "1-1 (1) 운율, 비유, 상징의 즐거움", id: "lit1_1" }, 
                             { name: "1-4 (1) 문학과 갈등", id: "lit1_2" },
                             { name: "2-1 (1) 문학과 성장", id: "lit1_3" }
-                        ],
-                        tag: "오션중 1학년 과정"
+                        ]
                     },
                     2: {
-                        title: "2학년 문학: 작품 속 서술의 특징과 사회 비추기",
-                        desc: "문학 작품 속 화자와 서술자의 설정 특성을 이해하여 표현 효과를 깊이 감상하고, 문학이 시대의 목소리와 사회적 현상을 어떻게 대변하며 비추는지 탐구합니다.",
+                        title: "2학년 문학: 작품 속 서술의 특징과 사회 비추기", tag: "표현과 감수성 확장",
+                        desc: "문학 작품 속 화자와 서술자의 설정 특성을 이해하고, 문학이 시대의 목소리와 사회적 현상을 어떻게 대변하며 비추는지 탐구합니다.",
                         chapters: [
                             { name: "1-1 (2) 문학 속 말하는 이나 보는 이", id: "lit2_1" },
                             { name: "2-1 (1) 사회를 비추는 문학", id: "lit2_2" },
                             { name: "2-4 (1) 반어, 풍자, 역설 표현", id: "lit2_3" }
-                        ],
-                        tag: "표현과 감수성 확장"
+                        ]
                     },
                     3: {
-                        title: "3학년 문학: 예술적 수용과 다양한 개성적 표현",
+                        title: "3학년 문학: 예술적 수용과 다양한 개성적 표현", tag: "예비 고교 연계 감상",
                         desc: "반어와 역설, 풍자 기법 등 문학 속의 다채로운 창의적 기법의 개념을 명확히 익히고 심미적이고 주체적인 문학 이해 능력을 완성합니다.",
                         chapters: [
                             { name: "2-4 (1) 반어, 풍자 역설 표현", id: "lit3_1" }
-                        ],
-                        tag: "예비 고교 연계 감상"
+                        ]
                     }
                 }
             },
             grammar: {
-                title: "문법 (Grammar)",
-                icon: "fa-spell-check",
+                title: "문법 (Grammar)", icon: "fa-spell-check",
                 grades: {
                     1: {
-                        title: "1학년 문법: 단어의 갈래와 우리말 어휘의 상생",
-                        desc: "우리 국어의 9품사 갈래와 형태적 쓰임의 근간을 정비하는 동시에 일상적인 어휘 사용 양상을 성찰하며 올바르고 고운 말 사용 토대를 구축합니다.",
+                        title: "1학년 문법: 단어의 갈래와 우리말 어휘의 상생", tag: "우리말 형태와 규범의 확립",
+                        desc: "우리 국어의 9품사 갈래와 형태적 쓰임을 정비하고 일상적인 어휘 사용 양상을 성찰하며 올바르고 고운 말 사용 토대를 구축합니다.",
                         chapters: [
                             { name: "1-3 (1) 품사로 빚어낸 세상", id: "gram1_1" },
                             { name: "2-2 (1) 단어의 짜임과 새말", id: "gram1_3" },
                             { name: "2-2 (2) 어휘의 양상과 쓰임", id: "gram1_2" }
-                        ],
-                        tag: "우리말 형태와 규범의 확립"
+                        ]
                     },
                     2: {
-                        title: "2학년 문법: 국어 규범의 효과와 한글의 원리",
-                        desc: "상황에 부합하는 피동 표현과 인용 표현의 쓰임새 및 효과를 분석하며, 우리말 한글의 위대한 창제 원리와 독창적 원형을 깊게 고찰합니다.",
+                        title: "2학년 문법: 국어 규범의 효과와 한글의 원리", tag: "어문 규범 및 국어사 기초",
+                        desc: "상황에 부합하는 피동 표현과 인용 표현의 쓰임새를 분석하며, 우리말 한글의 위대한 창제 원리와 독창적 원형을 깊게 고찰합니다.",
                         chapters: [
                             { name: "1-2 (1) 피동 표현과 인용 표현", id: "gram2_1" },
                             { name: "2-2 (1) 한글의 원리와 가치 & (2) 음운의 체계", id: "gram2_2_merged" }
-                        ],
-                        tag: "어문 규범 및 국어사 기초"
+                        ]
                     },
                     3: {
-                        title: "3학년 문법: 말소리의 체계와 발음 분석",
+                        title: "3학년 문법: 말소리의 체계와 발음 분석", tag: "최종 중학 핵심 문법 완성",
                         desc: "자음과 모음의 조음 방식에 따른 세부적인 음운 체계를 정밀 분석하고, 표준 발음법을 체득하여 보다 정확한 언어 규범을 완성합니다.",
                         chapters: [
                             { name: "2-2 (2) 음운의 체계", id: "gram3_1" }
-                        ],
-                        tag: "최종 중학 핵심 문법 완성"
+                        ]
                     }
                 }
             },
             speaking_media: {
-                title: "말하기-듣기·매체 (Speaking & Media)",
-                icon: "fa-headset",
+                title: "말하기-듣기·매체 (Speaking & Media)", icon: "fa-headset",
                 grades: {
                     1: {
-                        title: "1학년 말하기-듣기·매체: 추론적 경청과 디지털 소통",
-                        desc: "화자의 의도를 추론하고 타인을 존중하는 토의 기법을 익힙니다. 아울러 다중 매체의 특성을 이해하고 올바른 디지털 소통 습관을 형성합니다.",
+                        title: "1학년 말하기-듣기·매체: 추론적 경청과 디지털 소통", tag: "소통과 미디어 리터러시 기초",
+                        desc: "화자의 의도를 추론하고 타인을 존중하는 토의 기법을 익힙니다. 다중 매체의 특성을 이해하고 올바른 디지털 소통 습관을 형성합니다.",
                         chapters: [
                             { name: "1-1 (2) 추론하며 듣기", id: "speak1_1" }, 
                             { name: "1-3 (2) 상호 작용적 매체와 소통 & 1-4 (2) 토의하기", id: "media_speak1_merged2" },
                             { name: "2-4 (1) 매체와 생활 & (2) 존중하는 언어 생활", id: "speak_media1_merged" }
-                        ],
-                        tag: "소통과 미디어 리터러시 기초"
+                        ]
                     },
                     2: {
-                        title: "2학년 말하기-듣기·매체: 효과적 발표와 매체 생산",
-                        desc: "소통 방식을 점검하며 효과적으로 대중 발표를 수행하고, 매체가 세상을 재현하는 방식을 분석하여 직접 창의적인 영상 매체를 기획·제작합니다.",
+                        title: "2학년 말하기-듣기·매체: 효과적 발표와 매체 생산", tag: "발표 리더십과 매체 생산",
+                        desc: "소통 방식을 점검하며 효과적으로 대중 발표를 수행하고, 매체가 세상을 재현하는 방식을 분석하여 직접 영상을 기획 제작합니다.",
                         chapters: [
                             { name: "1-2 (2) 매체 자료의 재현 방식", id: "media2_1" },
                             { name: "1-4 (1) 듣기 말하기 과정의 점검과 조정 & (2) 효과적으로 발표하기", id: "speak2_1_merged" },
                             { name: "2-1 (2) 공감하고 조정하는 대화", id: "speak2_3" },
                             { name: "2-4 (2) 영상 매체 자료 제작하기", id: "media2_2" }
-                        ],
-                        tag: "발표 리더십과 매체 생산"
+                        ]
                     },
                     3: {
-                        title: "3학년 말하기-듣기·매체: 공감 대화와 미디어 책임",
-                        desc: "이견을 조율하는 평화로운 대화법을 실천하고, 미디어 알고리즘의 편향성을 넘어 책임감 있게 온라인 매체를 수용하고 생산하는 역량을 완성합니다.",
+                        title: "3학년 말하기-듣기·매체: 공감 대화와 미디어 책임", tag: "고급 조율 및 미디어 완성",
+                        desc: "이견을 조율하는 평화로운 대화법을 실천하고, 온라인 매체를 수용하고 생산하는 역량을 완성합니다.",
                         chapters: [
                             { name: "2-1 (2) 공감하고 조정하는 대화", id: "speak3_1" },
                             { name: "3학년 연계 과정: 디지털 알고리즘의 윤리성 및 매체 생산 원칙", id: "media3_1" }
-                        ],
-                        tag: "고급 조율 및 미디어 완성"
+                        ]
                     }
                 }
             },
             reading: {
-                title: "읽기-쓰기 (Reading & Writing)",
-                icon: "fa-pen-nib",
+                title: "읽기-쓰기 (Reading & Writing)", icon: "fa-pen-nib",
                 grades: {
                     1: {
-                        title: "1학년 읽기-쓰기: 요약형 문해력과 진솔·설득 글쓰기",
-                        desc: "글의 구조를 간파하여 핵심 내용을 요약적으로 독해하고, 자신의 경험과 가치를 깊이 있게 나누는 일상 정서 수필과 명확한 근거를 갖춘 주장 에세이를 집필합니다.",
+                        title: "1학년 읽기-쓰기: 요약형 문해력과 진솔·설득 글쓰기", tag: "글쓰기 구조화 및 기초 문해력 완성",
+                        desc: "글의 핵심 내용을 요약적으로 독해하고, 자신의 경험을 나누는 수필과 타당한 근거를 갖춘 주장 에세이를 집필합니다.",
                         chapters: [
                             { name: "1-2 (1) 요약하며 읽기", id: "read1_1" }, 
                             { name: "1-2 (2) 정보 전달하는 글 쓰기", id: "read1_1_2" }, 
-                            { name: "1-3 (2) 설명하는 글 쓰기", id: "read1_2" }, 
                             { name: "2-1 (2) 진솔한 글 쓰기", id: "read1_4" },
-                            { name: "2-3 (1) 추론하며 읽기 & (2) 주장하는 글 쓰기", id: "read1_5_merged" }
-                        ],
-                        tag: "글쓰기 구조화 및 기초 문해력 완성"
+                            { name: "2-3 (1) 추론하며 읽기", id: "read1_5_1" },
+                            { name: "2-3 (2) 주장하는 글 쓰기", id: "read1_5_2" }
+                        ]
                     },
                     2: {
-                        title: "2학년 읽기-쓰기: 점검 독서, 다양한 설명 및 복합양식 작문",
-                        desc: "자신의 읽기 인지 과정을 스스로 성찰하고 조율하는 점검 독서를 체화하고, 쟁점을 분석적으로 고찰하는 설명 방법과 논증적 수사학, 여러 복합 매체 자료를 결합한 글쓰기를 수행합니다.",
+                        title: "2학년 읽기-쓰기: 점검 독서, 다양한 설명 및 복합양식 작문", tag: "비문학 기획 분석 및 논리 작문 역량",
+                        desc: "자신의 읽기 인지 과정을 점검하고, 쟁점을 분석적으로 고찰하는 설명 방법 및 논증적 글쓰기를 수행합니다.",
                         chapters: [
                             { name: "1-1 (1) 읽기 과정의 점검과 조정", id: "read2_1" },
                             { name: "1-3 (1) 설명 방법과 논증 방법", id: "read2_2" }, 
+                            { name: "1-3 (2) 설명하는 글 쓰기", id: "read1_2" },
                             { name: "2-3 (1) 복합 양식의 글과 자료 읽기 & (2) 복합 양식 자료를 활용한 글 쓰기", id: "read2_3_merged" }
-                        ],
-                        tag: "비문학 기획 분석 및 논리 작문 역량"
+                        ]
                     },
                     3: {
-                        title: "3학년 읽기-쓰기: 복합 매체 자료 연계 논리 작문",
-                        desc: "다양한 매체에서 수집한 다채로운 복합양식 자료들을 체계적으로 엮어 신뢰성 있는 정보와 고유한 주장이 녹아든 완성도 높은 글을 저술합니다.",
+                        title: "3학년 읽기-쓰기: 복합 매체 자료 연계 논리 작문", tag: "논서술형 학술 쓰기 마스터",
+                        desc: "다양한 매체에서 수집한 다채로운 복합양식 자료들을 엮어 신뢰성 있는 완성도 높은 글을 저술합니다.",
                         chapters: [
                             { name: "2-3 (2) 복합 양식 자료를 활용한 글 쓰기", id: "read3_1" }
-                        ],
-                        tag: "논서술형 학술 쓰기 마스터"
+                        ]
                     }
                 }
             }
         };
 
-        // 인터랙티브 모달 팝업 내부용 세부 학습 요점 & 퀴즈 데이터베이스
         const learningDetails = {
-            // 문학 영역
             lit1_1: {
-                title: "1-1 (1) 운율, 비유, 상징의 즐거움",
-                subtitle: "중학 1학년 문학",
-                desc: "이 단원에서는 문학 작품의 언어적 특성인 운율, 비유, 상징을 이해하는 법을 배웁니다. 시를 읽으며 느껴지는 음악적 가치(운율)와 어떠한 대상에 빗대어(비유) 깊은 가치관을 함축적으로 구성하는(상징) 문장 창작 원리를 습득할 수 있습니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "1-1 (1) 운율, 비유, 상징의 즐거움", subtitle: "중학 1학년 문학",
+                desc: "문학 작품의 언어적 특성인 운율, 비유, 상징을 이해하는 법을 배웁니다.",
                 appUrl: "https://hanulddurag.github.io/1-1-poem/", 
-                q: "다음 중 대상을 다른 사물에 직접 빗대어 'A는 B이다' 형태로 표현하는 비유법은 무엇일까요?",
-                options: ["은유법", "직유법", "의인법", "대유법"],
-                ans: 0
+                q: "대상을 다른 사물에 직접 빗대어 'A는 B이다' 형태로 표현하는 비유법은?", options: ["은유법", "직유법", "의인법", "대유법"], ans: 0
             },
             lit1_2: {
-                title: "1-4 (1) 문학과 갈등",
-                subtitle: "중학 1학년 문학",
-                desc: "소설이나 극문학 속 인물들의 다양한 갈등 관계를 이해하는 단원입니다. 인물 내부의 고뇌인 내적 갈등과 타인이나 사회적 환경과의 충돌인 외적 갈등을 입체적으로 분석하며, 갈등 해결 과정에 투영된 작가의 지혜와 삶의 성찰을 이해합니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "1-4 (1) 문학과 갈등", subtitle: "중학 1학년 문학",
+                desc: "소설이나 극문학 속 인물들의 다양한 갈등 관계(내적, 외적 갈등)를 분석합니다.",
                 appUrl: "https://script.google.com/macros/s/AKfycbz6Q38JFa7GAXUKv0WQVZd-60qdgUZJRwp0I2fSGMahM-Gwe4ziEXFQSe4GFOjnrnyklg/exec",
-                q: "소설 속 주인공이 자신의 신념이나 양심 사이에서 깊이 고민하고 주저하는 갈등의 갈래는 무엇일까요?",
-                options: ["인물과 인물 사이의 갈등", "내적 갈등", "인물과 사회 사이의 갈등", "인물과 자연 사이의 갈등"],
-                ans: 1
+                q: "소설 속 주인공이 자신의 신념이나 양심 사이에서 고민하는 갈등은?", options: ["인물 간 갈등", "내적 갈등", "인물과 사회 갈등", "자연과의 갈등"], ans: 1
             },
             lit1_3: {
-                title: "2-1 (1) 문학과 성장",
-                subtitle: "중학 1학년 문학",
-                desc: "문학 작품 속 인물이 겪는 경험과 갈등 극복 과정을 통해 자신의 삶을 돌아보고 내면적으로 성장하는 의미를 깨닫는 단원입니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "2-1 (1) 문학과 성장", subtitle: "중학 1학년 문학",
+                desc: "작품 속 인물이 겪는 경험과 갈등 극복 과정을 통해 자아 성장의 의미를 깨닫습니다.",
                 appUrl: "https://script.google.com/macros/s/AKfycbxFeaW2fIWwWO4A6nJnPPdLXWPVXsQ3-BVZNce7gpTFl_NBgfCZTPV14KOboXArue6nPw/exec",
-                q: "문학 작품을 감상하며 얻을 수 있는 '내적 성장'과 거리가 먼 것은 무엇일까요?",
-                options: ["타인의 삶을 이해하고 공감한다.", "자신의 삶을 비추어 보고 성찰한다.", "어휘를 기계적으로 암기하는 데 집중한다.", "바람직한 삶의 가치관을 형성한다."],
-                ans: 2
+                q: "문학 작품을 감상하며 얻을 수 있는 '내적 성장'과 거리가 먼 것은?", options: ["타인 공감", "자아 성찰", "어휘의 기계적 암기", "바람직한 가치관 형성"], ans: 2
             },
             lit2_2: {
-                title: "2-1 (1) 사회를 비추는 문학",
-                subtitle: "중학 2학년 문학",
-                desc: "이 단원에서는 문학이 우리 현실 사회를 담아내고 상호작용하는 원리를 학습합니다. 문학 작품이 창작되던 시대의 사회적·역사적 배경을 바탕으로 작가의 의도와 삶의 메시지를 올바르게 해석하는 안목을 기릅니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "2-1 (1) 사회를 비추는 문학", subtitle: "중학 2학년 문학",
+                desc: "문학 작품이 창작되던 시대의 사회적 배경을 바탕으로 작가의 의도를 해석합니다.",
                 appUrl: "", 
-                q: "문학 작품이 창작된 역사적 배경과 사회적 갈등을 중심으로 작품의 숨겨진 의미를 파악하는 문학 감상 관점은?",
-                options: ["표현론적 관점", "반영론적 관점", "수용론적 관점", "절대주의적 관점"],
-                ans: 1
+                q: "작품이 창작된 사회·역사적 배경을 중심으로 의미를 파악하는 관점은?", options: ["표현론적", "반영론적", "수용론적", "절대주의적"], ans: 1
             },
             lit2_3: {
-                title: "2-4 (1) 반어, 풍자, 역설 표현",
-                subtitle: "중학 2학년 문학",
-                desc: "문학을 더욱 참신하고 생생하게 구성하는 특수 수사적 기법인 반어(Irony), 풍자(Satire), 역설(Paradox)을 배웁니다. 겉과 속이 다른 말하기, 모순된 상황을 통한 진리 전달의 효과를 체득합니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "2-4 (1) 반어, 풍자, 역설 표현", subtitle: "중학 2학년 문학",
+                desc: "특수 수사적 기법인 반어, 풍자, 역설의 표현 효과를 체득합니다.",
                 appUrl: "", 
-                q: "'소리 없는 아우성'과 같이 문장 자체는 논리적으로 말이 되지 않으나 그 속에 깊은 진리를 품고 있는 표현법은?",
-                options: ["반어법", "역설법", "은유법", "대조법"],
-                ans: 1
+                q: "'소리 없는 아우성'과 같이 모순된 상황 속에 진리를 품는 표현은?", options: ["반어법", "역설법", "은유법", "대조법"], ans: 1
             },
-            
-            // 문법 영역
             gram1_1: {
-                title: "1-3 (1) 품사로 빚어낸 세상",
-                subtitle: "중학 1학년 문법",
-                desc: "선생님의 전용 맞춤형 스마트 어플리케이션으로 바로 학습할 수 있습니다! 품사의 기초 정의와 갈래를 익히며 한글 단어의 위대한 규칙성을 탐색해 보세요.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "1-3 (1) 품사로 빚어낸 세상", subtitle: "중학 1학년 문법",
+                desc: "품사의 기초 정의와 갈래를 익히며 한글 단어의 규칙성을 탐색합니다.",
                 appUrl: "https://script.google.com/macros/s/AKfycbwFIScpk_D0vOb0zKRSyl7hOdw5AUcpsj0WlNMIIj15SP8N_g53I4g3-RkIxjBfa330rw/exec", 
-                q: "국어 품사 중 사물이나 사람의 이름을 나타내는 말로, 조사와 결합하여 주로 문장의 주어 목적어 보어 자리에 쓰이는 갈래는?",
-                options: ["명사", "대명사", "동사", "형용사"],
-                ans: 0
+                q: "사물이나 사람의 이름을 나타내는 품사는?", options: ["명사", "대명사", "동사", "형용사"], ans: 0
             },
             gram1_3: {
-                title: "2-2 (1) 단어의 짜임과 새말",
-                subtitle: "중학 1학년 문법",
-                desc: "우리가 매일 사용하는 단어가 어떻게 구성되어 있는지 분석합니다. 뜻을 가진 실질적인 부분인 '어근'과 그 앞뒤에 붙어 뜻을 제한하는 '접사'의 원리를 배우고, 시대 흐름에 맞게 창조되는 '새말(신조어)'의 짜임을 고찰합니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "2-2 (1) 단어의 짜임과 새말", subtitle: "중학 1학년 문법",
+                desc: "어근과 접사의 원리를 배우고, 창조되는 신조어의 짜임을 고찰합니다.",
                 appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbzd9NfmHLrLKpTDYVe0X77WsDzOHP4Az8WWW6DU-eSmxGuKpw-LymCOFDh-uMjVKefUFw/exec", 
-                q: "단어의 결합 중 두 개 이상의 실질적인 단어 뿌리(어근+어근)가 합쳐져서 만들어진 단어를 무엇이라고 부를까요?",
-                options: ["단일어", "합성어", "파생어", "약어"],
-                ans: 1
+                q: "두 개 이상의 실질적인 어근이 합쳐진 단어는?", options: ["단일어", "합성어", "파생어", "약어"], ans: 1
             },
             gram1_2: {
-                title: "2-2 (2) 어휘의 양상과 쓰임",
-                subtitle: "중학 1학년 문법",
-                desc: "우리말 어휘의 다양한 양상(고유어, 한자어, 외래어 등)을 파악하고, 일상적인 어휘 사용 양상을 성찰하며 상황에 맞는 올바르고 고운 말 사용 토대를 구축합니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
-                appUrl: "", 
-                q: "다른 나라의 말이 우리말에 들어와 우리말처럼 쓰이는 단어를 무엇이라고 하나요?",
-                options: ["고유어", "한자어", "외래어", "신조어"],
-                ans: 2
+                title: "2-2 (2) 어휘의 양상과 쓰임", subtitle: "중학 1학년 문법",
+                desc: "고유어, 한자어, 외래어 등을 파악하고 올바른 어휘 사용 토대를 구축합니다.",
+                appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbws7yvu5xik1AYVgnDNHQ_RLTbgSXn0YeAn1MOIWxJVxvS6O92EE6nE2M4ok9-4-cKTUw/exec", 
+                q: "다른 나라 말이 들어와 우리말처럼 쓰이는 단어는?", options: ["고유어", "한자어", "외래어", "신조어"], ans: 2
             },
             gram2_1: {
-                title: "1-2 (1) 피동 표현과 인용 표현",
-                subtitle: "중학 2학년 문법",
-                desc: "동작을 스스로 하느냐(능동) 아니면 당하느냐(피동), 다른 사람의 말을 빌려 오느냐(인용)에 따른 문법 체계를 다룹니다. 말하는 이의 관점과 전달 효과의 차이를 완벽히 분석하는 단원입니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "1-2 (1) 피동 표현과 인용 표현", subtitle: "중학 2학년 문법",
+                desc: "능동, 피동, 인용에 따른 문법 체계와 말하는 이의 관점을 배웁니다.",
                 appUrl: "", 
-                q: "다음 문장 중 제삼자의 말을 간접적으로 따와서 전달하는 올바른 '간접 인용 표현'은 무엇일까요?",
-                options: ["영희가 \"오늘 춥다.\"라고 말했다.", "영희가 오늘 춥다고 말했다.", "영희가 오늘 춥냐며 물어보았다.", "영희가 춥다는 것에 동의했다."],
-                ans: 1
+                q: "간접 인용 표현의 올바른 예시는?", options: ["영희가 \"오늘 춥다\"라고 말했다.", "영희가 오늘 춥다고 말했다.", "영희가 춥냐고 물었다.", "영희가 추운 것에 동의했다."], ans: 1
             },
             gram2_2_merged: {
-                title: "2-2 (1) 한글의 원리와 가치 & (2) 음운의 체계",
-                subtitle: "중학 2학년 문법 통합과정",
-                desc: "세계 과학적 문자사에 길이 남을 훈민정음(한글)의 창제 배경과 자음·모음의 제자 원리를 탐색하고, 말의 뜻을 구별해 주는 소리의 가장 작은 단위인 '음운'의 성질을 분류합니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "2-2 (1) 한글의 원리와 가치 & 음운 체계", subtitle: "중학 2학년 문법",
+                desc: "한글의 제자 원리를 탐색하고 음운의 성질을 분류합니다.",
                 appUrl: "", 
-                q: "다음 중 한글의 자음 기본자(ㄱ, ㄴ, ㅁ, ㅅ, ㅇ)가 만들어진 가장 핵심적인 창제 원리는 무엇일까요?",
-                options: ["하늘과 땅의 형상을 본뜸", "한자의 모양을 모방함", "발음 기관의 모양을 본뜸", "기존의 사물 모양을 단순화함"],
-                ans: 2
+                q: "자음 기본자의 가장 핵심적인 창제 원리는?", options: ["하늘/땅 형상", "한자 모방", "발음 기관 본뜸", "기존 사물 단순화"], ans: 2
             },
-
-            // 말하기-듣기·매체 영역
             speak1_1: {
-                title: "1-1 (2) 추론하며 듣기",
-                subtitle: "중학 1학년 말하기-듣기",
-                desc: "화자의 대화 의도와 수사 기법을 입체적으로 추론하여 듣는 비판적 경청 능력을 배양합니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "1-1 (2) 추론하며 듣기", subtitle: "중학 1학년 말하기-듣기",
+                desc: "화자의 대화 의도와 수사 기법을 추론하여 듣는 비판적 경청 능력을 배양합니다.",
                 appUrl: "https://script.google.com/macros/s/AKfycbzt188_2CYknZY9fQgn4gtRKe73RRw5txPWYowgi_8Kmp0GqYQOdYSo4PAVlCsON7lvnA/exec", 
-                q: "대화 중 화자의 표정이나 억양 등 비언어적 단서를 통해 숨겨진 의도를 파악하는 것을 무엇이라고 하나요?",
-                options: ["사실적 듣기", "추론적 듣기", "공감적 듣기", "비판적 듣기"],
-                ans: 1
+                q: "비언어적 단서를 통해 숨겨진 의도를 파악하는 듣기는?", options: ["사실적 듣기", "추론적 듣기", "공감적 듣기", "비판적 듣기"], ans: 1
             },
             media_speak1_merged2: {
-                title: "1-3 (2) 상호 작용적 매체와 소통 & 1-4 (2) 토의하기",
-                subtitle: "중학 1학년 말하기-듣기·매체 통합과정",
-                desc: "다양한 매체의 특성을 이해하여 올바른 디지털 소통 방식을 배우고, 공동의 문제를 해결하기 위해 의견을 교환하며 최선의 대안을 찾아가는 토의의 절차와 방법을 함께 학습합니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "1-3 (2) 상호 작용적 매체와 소통 & 1-4 (2) 토의", subtitle: "중학 1학년 말하기-듣기·매체",
+                desc: "매체를 통한 올바른 소통과 최선의 대안을 찾아가는 토의 절차를 학습합니다.",
                 appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbyDM7ONjaspk2JQNvHqvOR4JcP-c7DYqsS9GI_fTUyXISbgguab_9O-i6LbIvXz4YI-zA/exec",
-                q: "상호 작용적 매체를 활용하여 토의할 때 가장 적절한 태도는 무엇일까요?",
-                options: ["자신의 의견만을 강조하여 빠르게 결론을 내린다.", "수용자와 생산자가 실시간으로 소통하며 타협점을 찾는다.", "익명성을 이용하여 다른 사람의 의견을 무조건 반박한다.", "자료의 출처나 신뢰성은 무시하고 일단 공유한다."],
-                ans: 1
+                q: "상호 작용적 매체를 활용하여 토의할 때 가장 적절한 태도는?", options: ["내 의견 강조", "수용자-생산자 실시간 소통 타협", "무조건 반박", "출처 무시 공유"], ans: 1
             },
-            speak_media1_merged: {
-                title: "2-4 (1) 매체와 생활 & (2) 존중하는 언어 생활",
-                subtitle: "중학 1학년 말하기-듣기·매체 통합과정",
-                desc: "다양한 매체의 특징을 비판적으로 분석하여 소통하는 습관을 들이고, 나아가 언어폭력의 문제점을 성찰하며 서로를 배려하는 다정하고 존중받는 언어 생활 태도를 내면화합니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
-                appUrl: "", 
-                q: "상대방과 대화할 때 올바르고 존중하는 언어 생활의 태도로 가장 적절한 것은?",
-                options: ["자신의 기분만 생각하여 말한다.", "상대방의 처지와 감정을 배려하여 말한다.", "거친 은어나 비속어를 섞어 친근감을 표시한다.", "온라인상에서는 익명성에 기대어 편하게 말한다."],
-                ans: 1
-            },
-            speak2_1_merged: {
-                title: "1-4 (1) 듣기 말하기 과정의 점검과 조정 & (2) 효과적으로 발표하기",
-                subtitle: "중학 2학년 말하기-듣기 통합과정",
-                desc: "타인과 대화를 나눌 때 자신의 소통 방식을 능동적으로 되돌아보며 조정하는 능력과 함께, 청중 분석 및 적절한 시청각 매체 연계를 통해 다수 앞에서 논리적이고 효과적으로 발표하는 기법을 배웁니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
-                appUrl: "", 
-                q: "청중 앞에서 프레젠테이션(발표)을 할 때, 발표 내용의 신뢰도와 흥미를 극대화할 수 있는 가장 우수한 비음성적 전략은?",
-                options: ["발표 원고를 처음부터 끝까지 눈을 떼지 않고 읽기", "핵심 내용을 요약한 시각적 도표나 영상 매체 활용하기", "최대한 빠른 속도로 속사포처럼 말하기", "청중의 시선을 외면하고 칠판만 응시하기"],
-                ans: 1
-            },
-            speak2_3: {
-                title: "2-1 (2) 공감하고 조정하는 대화",
-                subtitle: "중학 2학년 말하기-듣기",
-                desc: "서로 다른 가치관이나 목적을 가진 사람들 간의 갈등을 평화적으로 조율하는 의사소통법을 체득합니다. 정중함의 법칙(공손성의 원리)과 공감적 경청법의 핵심을 실천하는 단원입니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
-                appUrl: "", 
-                q: "상대방에게 부담을 주는 표현은 최소화하고, 혜택을 주는 표현은 극대화하라는 공손성의 원리 규칙은?",
-                options: ["동의의 규칙", "겸양의 규칙", "관용의 규칙", "요령의 규칙"],
-                ans: 3
-            },
-            media2_1: {
-                title: "1-2 (2) 매체 자료의 재현 방식",
-                subtitle: "중학 2학년 매체",
-                desc: "뉴스, 드라마, SNS 등 수많은 미디어 텍스트들이 우리 현실을 있는 그대로 보여주는 것이 아니라, 특정 목적과 편향에 따라 세상을 '재현'하고 재구성한다는 원리를 파헤칩니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
-                appUrl: "", 
-                q: "매체 생산자가 사건을 보도할 때 특정 사진의 구도를 선택하거나 자극적인 자막을 가미하는 주된 리터러시적 원인은?",
-                options: ["매체 생산이 완전하게 무작위로 이뤄지기 때문에", "특정 관점과 가치를 담아 대상을 '재현'하고 재구성하기 위해", "단순히 지면의 디자인을 예쁘게 만들기 위해", "매체 수용자의 읽기 노력을 무력화하기 위해"],
-                ans: 1
-            },
-            media2_2: {
-                title: "2-4 (2) 영상 매체 자료 제작하기",
-                subtitle: "중학 2학년 매체",
-                desc: "아이디어 기획부터 스토리보드(콘티) 설계, 자막 및 음향 연출에 이르기까지 복합 매체 수단을 조합한 한 편의 참신한 공익 광고나 소개 영상을 직접 설계하고 모의 편집해 보는 실용 단원입니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
-                appUrl: "", 
-                q: "영상 매체물을 기획할 때, 촬영 화면의 구도와 인물의 대사 및 자막의 위치를 스케치해 둔 영상 제작의 설계도는 무엇인가요?",
-                options: ["시놉시스", "스토리보드 (콘티)", "편집 프로그램 소스", "배급 계획표"],
-                ans: 1
-            },
-
-            // 읽기-쓰기 영역 (통합 분리된 단원)
             read1_1: {
-                title: "1-2 (1) 요약하며 읽기",
-                subtitle: "중학 1학년 읽기-쓰기",
-                desc: "읽기 목적과 텍스트의 구조적 특징(설명, 주장 등)에 맞춰 방대한 글의 요점을 압축하는 비문학 독해 기본기를 다집니다. 단락별 중심 생각을 추려내는 거시적 안목을 기릅니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
-                appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbz82F2HZ0en0wKKvHdkrJUOR5ImX5-DuPderX-oHKszD-G0MILh2SxUGLKFh4GKGFcc/exec",
-                q: "글을 효율적으로 요약하기 위해 문단에서 덜 중요하거나 중복되는 정보를 지우고 생략하는 올바른 독해 규칙은 무엇인가요?",
-                options: ["선택 규칙", "삭제 규칙", "대체 규칙", "구성 규칙"],
-                ans: 1
+                title: "1-2 (1) 요약하며 읽기", subtitle: "중학 1학년 읽기-쓰기",
+                desc: "글의 방대한 내용을 압축하고 중심 생각을 추려내는 거시적 독해를 배웁니다.",
+                appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbzkuTb3uavXCTQgZtqZIGaCjqoJLlTIyUtRiYGVLaFa0GVyqiNd0B7KKUQV7ShEf5Zu/exec",
+                q: "덜 중요한 정보를 지우고 핵심만 남기는 요약 규칙은?", options: ["선택", "삭제", "대체", "구성"], ans: 1
             },
             read1_1_2: {
-                title: "1-2 (2) 정보 전달하는 글 쓰기",
-                subtitle: "중학 1학년 읽기-쓰기",
-                desc: "수집된 객관적인 정보를 바탕으로, 독자가 이해하기 쉽게 논리적이고 체계적으로 내용을 전개하여 설명하는 작문 방법을 학습합니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
-                appUrl: "https://hanulddurag.github.io/1122/", 
-                q: "정보를 전달하는 글을 쓸 때 가장 적절하지 않은 태도는 무엇일까요?",
-                options: ["독자의 수준을 고려하여 쉬운 어휘를 선택한다.", "객관적이고 정확한 사실만을 전달한다.", "글쓴이의 주관적인 감정과 주장을 강하게 드러낸다.", "표나 그래프 등 시각 자료를 활용해 이해를 돕는다."],
-                ans: 2
+                title: "1-2 (2) 정보 전달하는 글 쓰기", subtitle: "중학 1학년 읽기-쓰기",
+                desc: "논리적이고 체계적으로 내용을 전개하여 설명하는 작문 방법을 학습합니다.",
+                appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbxy_4XqkQ41VRLQstjK_0uPRrBZK5RMdhfiai2SbCJHGbl1u5cURjlonRrFIQr7YZa_jA/exec", 
+                q: "정보 전달 글을 쓸 때 적절하지 않은 것은?", options: ["독자 수준 고려", "객관적 사실 전달", "주관적 감정/주장 강조", "시각 자료 활용"], ans: 2
             },
-            read1_5_merged: {
-                title: "2-3 (1) 추론하며 읽기 & (2) 주장하는 글 쓰기",
-                subtitle: "중학 1학년 읽기-쓰기 통합과정",
-                desc: "독자의 배경지식을 활용해 글에 직접 드러나지 않은 의도나 관점을 추론하여 읽는 비판적 문해력을 기르고, 타당한 근거와 적절한 표현을 활용해 설득력 있는 주장하는 글을 기획·작성합니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+            read1_4: {
+                title: "2-1 (2) 진솔한 글 쓰기", subtitle: "중학 1학년 읽기-쓰기",
+                desc: "자신의 경험과 감동을 독자에게 진솔하고 개성 있게 표현하는 수필을 씁니다.",
+                appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbwUA6oRqUYxXZY_qryOab88qz5HspyUTX7sueoZmjscKHr0sa_c8y00ZxrDECAdu2UIPg/exec", 
+                q: "진솔하게 표현하는 글의 특징으로 알맞은 것은?", options: ["객관적 정보만 전달", "감정과 생각을 개성 있게 표현", "강한 논리적 근거", "상상력으로 사건 꾸밈"], ans: 1
+            },
+            read1_5_1: {
+                title: "2-3 (1) 추론하며 읽기", subtitle: "중학 1학년 읽기-쓰기",
+                desc: "글에 직접 드러나지 않은 정보를 문맥과 배경지식을 활용하여 능동적으로 추론합니다.",
+                appUrl: "https://hanulddurag.github.io/1231/",
+                q: "추론하며 읽기의 올바른 방법으로 적절하지 않은 것은?", options: ["문맥적 의미 파악", "표면적 정보만 암기", "숨겨진 의도 짐작", "배경지식 활용"], ans: 1
+            },
+            read1_5_2: {
+                title: "2-3 (2) 주장하는 글 쓰기", subtitle: "중학 1학년 읽기-쓰기",
+                desc: "타당한 근거를 마련하여 논리적으로 독자를 설득하는 글을 작성합니다.",
+                appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbwTsnpPYGZAUoFW3EUkgjYCUURM_ave_ycXAUFqmrN3tIUXX0AtGdHinm-n4MBuRerp2A/exec",
+                q: "주장하는 글에서 근거가 갖추어야 할 핵심 조건은?", options: ["주관적 감정", "객관적 사실 기반", "복잡한 문장", "소문 인용"], ans: 1
+            },
+            read1_2: {
+                title: "1-3 (2) 설명하는 글 쓰기", subtitle: "중학 2학년 읽기-쓰기",
+                desc: "다양한 설명 방법을 활용하여 독자가 이해하기 쉽게 정보를 전달하는 글을 씁니다.",
                 appUrl: "", 
-                q: "글을 읽을 때 문맥이나 단서를 통해 표면에 드러나지 않은 글쓴이의 숨겨진 의도를 파악하는 읽기 방법은?",
-                options: ["사실적 읽기", "추론적 읽기", "감상적 읽기", "음독"],
-                ans: 1
+                q: "설명하는 글의 전개 방식(설명 방법)이 아닌 것은?", options: ["정의", "예시", "비교", "비유적 심상"], ans: 3
             },
             read2_2: {
-                title: "1-3 (1) 설명 방법과 논증 방법",
-                subtitle: "중학 2학년 읽기-쓰기",
-                desc: "설명적이고 설득적인 텍스트에서 사용하는 기법을 깊이 고찰합니다. 정의, 비교와 대조, 분류 등 다양한 설명 방법과 함께 연역 논증, 귀납 논증 등 주장의 근거가 타당하게 구축되었는지를 분석하고 글을 씁니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
+                title: "1-3 (1) 설명 방법과 논증 방법", subtitle: "중학 2학년 읽기-쓰기",
+                desc: "정의, 비교, 연역, 귀납 등 설명적이고 설득적인 텍스트 기법을 다룹니다.",
                 appUrl: "", 
-                q: "구체적인 개별 사실들(철수도 죽는다, 영희도 죽는다)로부터 '모든 인간은 죽는다'라는 일반적인 결론을 도출해내는 대표적인 논증 방식은?",
-                options: ["연역 논증", "귀납 논증", "유추 논증", "변증법"],
-                ans: 1
-            },
-            read2_3_merged: {
-                title: "2-3 (1) 복합 양식의 글과 자료 읽기 & (2) 복합 양식 자료를 활용한 글 쓰기",
-                subtitle: "중학 2학년 읽기-쓰기 통합과정",
-                desc: "다양한 매체에서 복합양식으로 전달되는 텍스트를 타당성을 고려하며 수용하고, 시각·청각적 자료를 적절히 융합하여 스스로 한 편의 효과적인 복합 양식 글을 제작해 보는 단원입니다.",
-                ebs: "https://mid.ebs.co.kr/course/middle/curriculum/select?preTab=Y&stepId=STEP10002130",
-                visang: "https://vivasam.com/curriculum/middle/korean",
-                appUrl: "", 
-                q: "복합 양식 글을 쓸 때 시각 자료(예: 원형 그래프)를 함께 배치하여 얻을 수 있는 가장 주된 표현 효과는 무엇인가요?",
-                options: ["논리를 복잡하게 만들어 혼선을 준다.", "복잡한 수치 정보를 한눈에 직관적으로 파악할 수 있도록 돕는다.", "문장 기호를 대신하여 지면을 늘린다.", "작가의 감정 상태를 상징적으로 알려준다."],
-                ans: 1
+                q: "구체적 사실들로부터 일반적 결론을 도출해내는 논증은?", options: ["연역", "귀납", "유추", "변증법"], ans: 1
             }
         };
 
-        // 실시간 상태 관리 변수
+        // ----------------------------------------------------
+        // 페이지 상태 제어 및 렌더링 로직 (Vanilla JS)
+        // ----------------------------------------------------
         let activeSubject = 'literature';
         let activeGrade = 1;
 
-        // "오션 국어 교실"(로고) 클릭 시: '교육과정 & 교과서 안내'만 표출
         function showAboutSection(event) {
             if (event) event.preventDefault();
-            
             document.getElementById('about-section').classList.remove('hidden');
             document.getElementById('classroom-section').classList.add('hidden');
-            
-            setTimeout(() => {
-                document.getElementById('about-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 50);
+            setTimeout(() => { document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' }); }, 50);
         }
 
-        // 과목 버튼 클릭 시: 안내 숨기고 '학년 맞춤 학습관'만 표출
         function navigateSubject(subject) {
             document.getElementById('about-section').classList.add('hidden');
             document.getElementById('classroom-section').classList.remove('hidden');
-            
-            setSubject(subject);
-            setGrade(1); // 기본 1학년 설정
-            
-            setTimeout(() => {
-                document.getElementById('classroom-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 50);
+            activeSubject = subject;
+            activeGrade = 1;
+            updateClassroomContent();
+            setTimeout(() => { document.getElementById('classroom-section').scrollIntoView({ behavior: 'smooth' }); }, 50);
         }
 
-        // 영역(Subject) 변경 연동 함수
-        function setSubject(subject) {
-            activeSubject = subject;
-            
+        function setGrade(grade) {
+            activeGrade = grade;
             updateClassroomContent();
         }
 
-        // 학년(Grade) 변경 연동 함수
-        function setGrade(grade) {
-            activeGrade = grade;
-
-            // 모든 학년 버튼 초기화
+        function updateClassroomContent() {
+            // 버튼 상태 업데이트
             for (let i = 1; i <= 3; i++) {
                 const btn = document.getElementById('grade-btn-' + i);
-                if (btn) {
-                    btn.className = "px-5 py-2.5 rounded-full font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all";
+                if(btn) {
+                    btn.className = i === activeGrade 
+                        ? "px-5 py-2.5 rounded-full font-bold text-sm bg-blue-600 text-white transition-all shadow-md"
+                        : "px-5 py-2.5 rounded-full font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all";
                 }
             }
 
-            // 선택된 학년 버튼 하이라이팅
-            const activeBtn = document.getElementById('grade-btn-' + grade);
-            if (activeBtn) {
-                activeBtn.className = "px-5 py-2.5 rounded-full font-bold text-sm bg-blue-600 text-white transition-all shadow-md";
-            }
-
-            updateClassroomContent();
-        }
-
-        // DOM 데이터를 실시간으로 변경해 주는 렌더러 함수
-        function updateClassroomContent() {
+            const data = subjectData[activeSubject].grades[activeGrade];
             const contentBox = document.getElementById('content-box');
-            const tagEl = document.getElementById('content-tag');
-            const subTitleEl = document.getElementById('content-subject');
-            const titleEl = document.getElementById('content-title');
-            const descEl = document.getElementById('content-desc');
-            const chaptersEl = document.getElementById('content-chapters');
-
-            // 서서히 밝아지는 페이드인 애니메이션 유도
+            
+            // 애니메이션 재설정
             contentBox.classList.remove('animate-fade-in');
-            void contentBox.offsetWidth; // 리플로우 트리거
+            void contentBox.offsetWidth;
             contentBox.classList.add('animate-fade-in');
 
-            const currentData = subjectData[activeSubject].grades[activeGrade];
+            // 텍스트 매핑
+            document.getElementById('content-tag').textContent = data.tag;
+            document.getElementById('content-subject').innerHTML = `<i class="fa-solid ${subjectData[activeSubject].icon} mr-1"></i> ${subjectData[activeSubject].title}`;
+            document.getElementById('content-title').textContent = data.title;
+            document.getElementById('content-desc').textContent = data.desc;
 
-            // 텍스트 매칭
-            tagEl.textContent = currentData.tag;
-            subTitleEl.innerHTML = `<i class="fa-solid ${subjectData[activeSubject].icon} mr-1"></i> ${subjectData[activeSubject].title}`;
-            titleEl.textContent = currentData.title;
-            descEl.textContent = currentData.desc;
-
-            // 비상교과서 매칭 단원 목록 생성 (버튼 연동 구조로 개편)
+            // 목록 렌더링
+            const chaptersEl = document.getElementById('content-chapters');
             chaptersEl.innerHTML = '';
-            currentData.chapters.forEach(ch => {
+            
+            data.chapters.forEach(ch => {
                 const li = document.createElement('li');
                 li.className = "w-full";
-                
-                // 버튼 요소를 동적으로 주입
                 li.innerHTML = `
-                    <button onclick="openLearningModal('${ch.id}', '${ch.name}')" 
-                            class="w-full bg-slate-50 hover:bg-blue-50 hover:border-blue-200 p-4 rounded-xl border border-slate-100 text-left text-sm text-slate-700 font-bold flex items-center justify-between gap-2 group transition-all transform active:scale-[0.99] shadow-sm hover:shadow">
+                    <button onclick="openLearningModal('${ch.id}', '${ch.name}')" class="w-full bg-slate-50 hover:bg-blue-50 hover:border-blue-200 p-4 rounded-xl border border-slate-100 text-left text-sm text-slate-700 font-bold flex items-center justify-between gap-2 group transition-all transform active:scale-[0.99] shadow-sm hover:shadow">
                         <span class="flex items-center gap-2.5">
                             <i class="fa-solid fa-play-circle text-blue-500 group-hover:text-blue-600 text-lg transition-colors"></i>
                             <span class="group-hover:text-blue-700 transition-colors">${ch.name}</span>
@@ -816,44 +575,34 @@
             });
         }
 
-        // 모달 닫기
         function closeModal() {
             document.getElementById('learning-modal').classList.add('hidden');
         }
 
-        // 모달 데이터 로드 및 오픈
         function openLearningModal(id, originalName) {
-            const modal = document.getElementById('learning-modal');
+            const detail = learningDetails[id];
+            
+            // UI 엘리먼트 가져오기
             const titleEl = document.getElementById('modal-title');
             const subtitleEl = document.getElementById('modal-subtitle');
             const descEl = document.getElementById('modal-desc');
             const quizQEl = document.getElementById('modal-quiz-q');
             const quizOptionsEl = document.getElementById('modal-quiz-options');
             const feedbackEl = document.getElementById('quiz-feedback');
-
-            // 피드백 영역 숨김 초기화
-            feedbackEl.classList.add('hidden');
-            feedbackEl.className = "mt-4 text-sm font-bold hidden p-3.5 rounded-xl text-center";
-
-            // 데이터베이스 내 디테일 가이드 매칭
-            const detail = learningDetails[id];
-
-            // 맞춤 앱 연결 배너 컨트롤러
             const appBanner = document.getElementById('teacher-app-banner');
             const appReadyBanner = document.getElementById('teacher-app-ready-banner');
             const appLinkBtn = document.getElementById('btn-custom-app');
 
+            // 퀴즈 피드백 초기화
+            feedbackEl.classList.add('hidden');
+            feedbackEl.className = "mt-4 text-sm font-bold hidden p-3.5 rounded-xl text-center";
+            quizOptionsEl.innerHTML = '';
+
             if (detail) {
-                // 1. 헤더/텍스트 매칭
                 titleEl.textContent = detail.title;
                 subtitleEl.textContent = detail.subtitle;
                 descEl.textContent = detail.desc;
-                
-                // 2. 외부 링크 설정
-                document.getElementById('btn-external-ebs').href = detail.ebs;
-                document.getElementById('btn-external-visang').href = detail.visang;
 
-                // 3. 맞춤형 제작 앱 연동 체크
                 if (detail.appUrl && detail.appUrl.trim() !== "") {
                     appBanner.classList.remove('hidden');
                     appReadyBanner.classList.add('hidden');
@@ -863,90 +612,65 @@
                     appReadyBanner.classList.remove('hidden');
                 }
 
-                // 4. 미니 퀴즈 렌더링
                 quizQEl.textContent = detail.q;
-                quizOptionsEl.innerHTML = '';
-                
                 detail.options.forEach((opt, idx) => {
                     const btn = document.createElement('button');
                     btn.className = "w-full text-left p-3.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all flex justify-between items-center";
-                    btn.innerHTML = `
-                        <span>${idx + 1}. ${opt}</span>
-                        <i class="fa-regular fa-circle text-slate-300"></i>
-                    `;
-                    btn.onclick = () => checkAnswer(idx, detail.ans, btn);
+                    btn.innerHTML = `<span>${idx + 1}. ${opt}</span><i class="fa-regular fa-circle text-slate-300"></i>`;
+                    btn.onclick = () => checkAnswer(idx, detail.ans);
                     quizOptionsEl.appendChild(btn);
                 });
-
-                modal.classList.remove('hidden');
             } else {
-                // 커스텀 세부정보 데이터가 없는 경우의 기본 공통 템플릿 처리
                 titleEl.textContent = originalName;
                 subtitleEl.textContent = `${activeGrade}학년 국어 학습 센터`;
-                descEl.textContent = "본 단원은 비상교육 국어 교과서 연계 분석 단원입니다. 오션 국어 교실 실시간 피드백 퀴즈 모듈을 준비 중입니다. 연계 아카데믹 허브를 클릭하여 심도 있는 지식을 만나보세요.";
+                descEl.textContent = "본 단원은 비상교육 국어 교과서 연계 분석 단원입니다. 오션 국어 교실 실시간 피드백 모듈을 준비 중입니다.";
                 
-                // 앱 준비 중 배너 강제 노출
                 appBanner.classList.add('hidden');
                 appReadyBanner.classList.remove('hidden');
 
-                // 기본 링크 복구
-                document.getElementById('btn-external-ebs').href = "https://mid.ebs.co.kr";
-                document.getElementById('btn-external-visang').href = "https://www.vivasam.com";
-
-                // 기본 퀴즈 렌더링
-                quizQEl.textContent = "본 단원의 학습 목표를 사전에 확인하셨나요?";
-                quizOptionsEl.innerHTML = '';
-                const defaultOpts = ["예, 확인했습니다.", "복습 중입니다.", "선생님 설명이 필요해요."];
-                defaultOpts.forEach((opt, idx) => {
+                quizQEl.textContent = "본 단원의 학습 목표를 확인하셨나요?";
+                ["확인했습니다.", "복습 중입니다.", "설명이 필요해요."].forEach((opt) => {
                     const btn = document.createElement('button');
-                    btn.className = "w-full text-left p-3.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all flex justify-between items-center";
+                    btn.className = "w-full text-left p-3.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-all flex justify-between items-center";
                     btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-thumbs-up text-blue-500"></i>`;
                     btn.onclick = () => {
-                        feedbackEl.textContent = "멋진 배움의 자세입니다! 수업 시간에 더 역동적으로 참여해 보세요.";
+                        feedbackEl.textContent = "멋진 자세입니다! 수업 시간에 역동적으로 참여해 보세요.";
                         feedbackEl.className = "mt-4 text-sm font-bold p-3.5 rounded-xl text-center bg-blue-50 text-blue-800 animate-fade-in";
                         feedbackEl.classList.remove('hidden');
                     };
                     quizOptionsEl.appendChild(btn);
                 });
-
-                modal.classList.remove('hidden');
             }
+
+            document.getElementById('learning-modal').classList.remove('hidden');
         }
 
-        // 미니퀴즈 자가채점 시스템
-        function checkAnswer(selectedIdx, correctIdx, btnElement) {
+        function checkAnswer(selectedIdx, correctIdx) {
             const feedbackEl = document.getElementById('quiz-feedback');
             const allButtons = document.getElementById('modal-quiz-options').querySelectorAll('button');
 
-            // 다른 모든 대안 비활성화 및 스타일 조율
             allButtons.forEach((btn, idx) => {
                 btn.disabled = true;
                 if (idx === correctIdx) {
-                    btn.className = "w-full text-left p-3.5 bg-emerald-50 border border-emerald-300 rounded-xl text-sm font-bold text-emerald-800 transition-all flex justify-between items-center";
+                    btn.className = "w-full text-left p-3.5 bg-emerald-50 border border-emerald-300 rounded-xl text-sm font-bold text-emerald-800 flex justify-between items-center";
                     btn.querySelector('i').className = "fa-solid fa-circle-check text-emerald-600";
                 } else if (idx === selectedIdx && selectedIdx !== correctIdx) {
-                    btn.className = "w-full text-left p-3.5 bg-rose-50 border border-rose-300 rounded-xl text-sm font-bold text-rose-800 transition-all flex justify-between items-center";
+                    btn.className = "w-full text-left p-3.5 bg-rose-50 border border-rose-300 rounded-xl text-sm font-bold text-rose-800 flex justify-between items-center";
                     btn.querySelector('i').className = "fa-solid fa-circle-xmark text-rose-600";
                 } else {
-                    btn.className = "w-full text-left p-3.5 bg-slate-50 border border-slate-100 rounded-xl text-sm font-medium text-slate-400 transition-all flex justify-between items-center opacity-60";
+                    btn.className = "w-full text-left p-3.5 bg-slate-50 border border-slate-100 rounded-xl text-sm font-medium text-slate-400 flex justify-between items-center opacity-60";
                     btn.querySelector('i').className = "fa-regular fa-circle text-slate-200";
                 }
             });
 
-            // 피드백 문구 표출
             if (selectedIdx === correctIdx) {
-                feedbackEl.textContent = "🎉 정답입니다! 핵심 성취 수준을 훌륭하게 통과하셨습니다.";
+                feedbackEl.textContent = "🎉 정답입니다! 훌륭하게 이해하셨습니다.";
                 feedbackEl.className = "mt-4 text-sm font-bold p-3.5 rounded-xl text-center bg-emerald-50 text-emerald-800 animate-fade-in";
             } else {
-                feedbackEl.textContent = "💡 오답입니다. 성취 내용을 한 번 더 정독해보거나 비상교육 및 EBS 강의를 참고해보세요.";
+                feedbackEl.textContent = "💡 오답입니다. 성취 내용을 한 번 더 확인해보세요.";
                 feedbackEl.className = "mt-4 text-sm font-bold p-3.5 rounded-xl text-center bg-rose-50 text-rose-800 animate-fade-in";
             }
             feedbackEl.classList.remove('hidden');
-        }
-        
-        // 초기 로드 시 렌더링 호출
-        window.onload = function() {
-            updateClassroomContent();
         }
     </script>
 </body>
