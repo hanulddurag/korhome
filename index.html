@@ -56,39 +56,46 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[95vh] py-20 flex items-center justify-center overflow-hidden hero-gradient">
-        <div class="absolute inset-0 opacity-20">
+    <section class="relative min-h-[95vh] pt-32 pb-16 flex flex-col justify-between items-center overflow-hidden hero-gradient">
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
             </svg>
         </div>
-        <div class="relative z-10 text-center px-6 w-full max-w-5xl mt-24">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-16 drop-shadow-lg leading-tight">
+
+        <!-- 메인 타이틀: 상단 타원 꼭지점 부근 배치 -->
+        <div class="relative z-10 text-center px-6 w-full max-w-5xl mt-8">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg leading-tight">
                 언어로 소통하고 공감으로 성장합니다
             </h1>
-            <p class="text-xl md:text-2xl text-blue-50/90 mb-16 max-w-3xl mx-auto leading-relaxed font-medium">
+        </div>
+        
+        <!-- 인사말: 타이틀과 버튼 사이의 정중앙에 균형 있게 자동 배치 -->
+        <div class="relative z-10 text-center px-6 w-full max-w-3xl flex-grow flex items-center justify-center">
+            <p class="text-xl md:text-2xl text-blue-50/90 leading-relaxed font-medium">
                 안녕하세요. 오션중학교에서 학생들과 함께<br>따뜻하고 배움이 살아있는 국어 수업을 지향하는 곳입니다.
             </p>
-            
-            <div class="flex flex-col gap-6 items-center w-full max-w-5xl mx-auto">
-                <div class="flex flex-wrap gap-3 justify-center w-full">
-                    <button onclick="navigateSubject('literature')" class="px-5 py-4 text-lg bg-sky-50 text-sky-800 rounded-xl font-bold hover:bg-sky-100 transition-all shadow-md flex items-center gap-2 hover:scale-105 transform active:scale-95">
-                        <i class="fa-solid fa-feather-pointed text-sky-600"></i> 문학
-                    </button>
-                    <button onclick="navigateSubject('grammar')" class="px-5 py-4 text-lg bg-blue-50 text-blue-800 rounded-xl font-bold hover:bg-blue-100 transition-all shadow-md flex items-center gap-2 hover:scale-105 transform active:scale-95">
-                        <i class="fa-solid fa-spell-check text-blue-600"></i> 문법
-                    </button>
-                    <button onclick="navigateSubject('speaking_media')" class="px-5 py-4 text-lg bg-indigo-50 text-indigo-800 rounded-xl font-bold hover:bg-indigo-100 transition-all shadow-md flex items-center gap-2 hover:scale-105 transform active:scale-95">
-                        <i class="fa-solid fa-headset text-indigo-600"></i> 말하기-듣기·매체
-                    </button>
-                    <button onclick="navigateSubject('reading')" class="px-5 py-4 text-lg bg-violet-50 text-violet-800 rounded-xl font-bold hover:bg-violet-100 transition-all shadow-md flex items-center gap-2 hover:scale-105 transform active:scale-95">
-                        <i class="fa-solid fa-pen-nib text-violet-600"></i> 읽기-쓰기
-                    </button>
-                    
-                    <a href="https://script.google.com/macros/s/AKfycbzZsZ8QR9v0GTnmQiH0Cb0CG_7i_dHTddx8u8EHGMl-XV2zWHVtKaOxrrSzoGfWf9601g/exec" target="_blank" class="px-8 py-4 text-lg bg-amber-400 text-slate-900 rounded-xl font-bold hover:bg-amber-300 transition-all shadow-lg flex items-center justify-center gap-2 hover:scale-105 transform active:scale-95">
-                        <i class="fa-solid fa-comment-dots text-slate-800"></i> 질문하기
-                    </a>
-                </div>
+        </div>
+        
+        <!-- 교과 분류 버튼: 화면 하단으로 여유 있게 내림 -->
+        <div class="relative z-10 w-full max-w-5xl px-6 flex justify-center mb-8 md:mb-12">
+            <div class="flex flex-wrap gap-4 justify-center w-full">
+                <button onclick="navigateSubject('literature')" class="px-5 py-4 text-lg bg-sky-50 text-sky-800 rounded-xl font-bold hover:bg-sky-100 transition-all shadow-md flex items-center gap-2 hover:scale-105 transform active:scale-95">
+                    <i class="fa-solid fa-feather-pointed text-sky-600"></i> 문학
+                </button>
+                <button onclick="navigateSubject('grammar')" class="px-5 py-4 text-lg bg-blue-50 text-blue-800 rounded-xl font-bold hover:bg-blue-100 transition-all shadow-md flex items-center gap-2 hover:scale-105 transform active:scale-95">
+                    <i class="fa-solid fa-spell-check text-blue-600"></i> 문법
+                </button>
+                <button onclick="navigateSubject('speaking_media')" class="px-5 py-4 text-lg bg-indigo-50 text-indigo-800 rounded-xl font-bold hover:bg-indigo-100 transition-all shadow-md flex items-center gap-2 hover:scale-105 transform active:scale-95">
+                    <i class="fa-solid fa-headset text-indigo-600"></i> 말하기-듣기·매체
+                </button>
+                <button onclick="navigateSubject('reading')" class="px-5 py-4 text-lg bg-violet-50 text-violet-800 rounded-xl font-bold hover:bg-violet-100 transition-all shadow-md flex items-center gap-2 hover:scale-105 transform active:scale-95">
+                    <i class="fa-solid fa-pen-nib text-violet-600"></i> 읽기-쓰기
+                </button>
+                
+                <a href="https://script.google.com/macros/s/AKfycbzZsZ8QR9v0GTnmQiH0Cb0CG_7i_dHTddx8u8EHGMl-XV2zWHVtKaOxrrSzoGfWf9601g/exec" target="_blank" class="px-8 py-4 text-lg bg-amber-400 text-slate-900 rounded-xl font-bold hover:bg-amber-300 transition-all shadow-lg flex items-center justify-center gap-2 hover:scale-105 transform active:scale-95">
+                    <i class="fa-solid fa-comment-dots text-slate-800"></i> 질문하기
+                </a>
             </div>
         </div>
     </section>
