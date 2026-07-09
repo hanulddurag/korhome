@@ -63,21 +63,21 @@
             </svg>
         </div>
 
-        <!-- 메인 타이틀: mt-8 여백을 제거하여 인사말 글자 크기만큼 위로 상승 -->
+        <!-- 메인 타이틀: mt-0 으로 위로 상승시켜 타원 꼭지점에 밀착 -->
         <div class="relative z-10 text-center px-6 w-full max-w-5xl mt-0">
             <h1 class="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg leading-tight">
                 언어로 소통하고 공감으로 성장합니다
             </h1>
         </div>
         
-        <!-- 인사말: Flex-grow 속성으로 상하 여백을 완벽하게 등분하여 중앙 배치 -->
+        <!-- 인사말: Flex-grow 속성으로 상하 여백을 완벽하게 등분하여 정중앙 배치 -->
         <div class="relative z-10 text-center px-6 w-full max-w-3xl flex-grow flex items-center justify-center">
             <p class="text-xl md:text-2xl text-blue-50/90 leading-relaxed font-medium">
                 안녕하세요. 오션중학교에서 학생들과 함께<br>따뜻하고 배움이 살아있는 국어 수업을 지향하는 곳입니다.
             </p>
         </div>
         
-        <!-- 교과 분류 버튼: 위치 그대로 고정 -->
+        <!-- 교과 분류 버튼: 이전 수정안 그대로 하단 영역에 위치 -->
         <div class="relative z-10 w-full max-w-5xl px-6 flex justify-center mb-8 md:mb-12">
             <div class="flex flex-wrap gap-4 justify-center w-full">
                 <button onclick="navigateSubject('literature')" class="px-5 py-4 text-lg bg-sky-50 text-sky-800 rounded-xl font-bold hover:bg-sky-100 transition-all shadow-md flex items-center gap-2 hover:scale-105 transform active:scale-95">
@@ -408,6 +408,12 @@
                 appUrl: "https://script.google.com/macros/s/AKfycbxFeaW2fIWwWO4A6nJnPPdLXWPVXsQ3-BVZNce7gpTFl_NBgfCZTPV14KOboXArue6nPw/exec",
                 q: "문학 작품을 감상하며 얻을 수 있는 '내적 성장'과 거리가 먼 것은?", options: ["타인 공감", "자아 성찰", "어휘의 기계적 암기", "바람직한 가치관 형성"], ans: 2
             },
+            lit2_1: {
+                title: "1-1 (2) 문학 속 말하는 이나 보는 이", subtitle: "중학 2학년 문학",
+                desc: "시의 화자나 소설의 서술자가 작품의 분위기와 주제 전달에 미치는 영향을 파악합니다.",
+                appUrl: "https://script.google.com/macros/s/AKfycbzRGO9zFoni-JsnvwfSPgVcq43zNeH4mFNcRK_eJaqv2oJU6KL2XbZrwrn3umCaq-Gnjw/exec",
+                q: "소설에서 사건을 관찰하거나 겪으며 이야기를 전달하는 사람을 무엇이라고 하나요?", options: ["화자", "서술자", "작가", "독자"], ans: 1
+            },
             lit2_2: {
                 title: "2-1 (1) 사회를 비추는 문학", subtitle: "중학 2학년 문학",
                 desc: "문학 작품이 창작되던 시대의 사회적 배경을 바탕으로 작가의 의도를 해석합니다.",
@@ -441,7 +447,7 @@
             gram2_1: {
                 title: "1-2 (1) 피동 표현과 인용 표현", subtitle: "중학 2학년 문법",
                 desc: "능동, 피동, 인용에 따른 문법 체계와 말하는 이의 관점을 배웁니다.",
-                appUrl: "", 
+                appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbzukwrI7P9QTiGrprY4ULUAOwWLU90W1E1UgBOHnPTmKDJ3rOQm56bn6RkJCxoQX0yJ/exec", 
                 q: "간접 인용 표현의 올바른 예시는?", options: ["영희가 \"오늘 춥다\"라고 말했다.", "영희가 오늘 춥다고 말했다.", "영희가 춥냐고 물었다.", "영희가 추운 것에 동의했다."], ans: 1
             },
             gram2_2_merged: {
@@ -503,6 +509,12 @@
                 desc: "타당한 근거를 마련하여 논리적으로 독자를 설득하는 글을 작성합니다.",
                 appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbwTsnpPYGZAUoFW3EUkgjYCUURM_ave_ycXAUFqmrN3tIUXX0AtGdHinm-n4MBuRerp2A/exec",
                 q: "주장하는 글에서 근거가 갖추어야 할 핵심 조건은?", options: ["주관적 감정", "객관적 사실 기반", "복잡한 문장", "소문 인용"], ans: 1
+            },
+            read2_1: {
+                title: "1-1 (1) 읽기 과정의 점검과 조정", subtitle: "중학 2학년 읽기-쓰기",
+                desc: "자신의 독서 목적과 과정에 맞게 읽기 방법을 스스로 점검하고 조정하는 상위 인지 능력을 기릅니다.",
+                appUrl: "https://script.google.com/a/macros/ocean.ms.kr/s/AKfycbzMNZlb1FNpz66sNqbFWMziGi-Lnxv7fuyqu5Fdr5tSGQ8Vl8FNUZL5eV5IuU06yf75/exec", 
+                q: "글을 읽는 과정에서 자신의 이해 정도를 스스로 점검하고 통제하는 능력을 무엇이라고 하나요?", options: ["상위 인지 (초인지)", "배경지식", "추론적 이해", "비판적 평가"], ans: 0
             },
             read1_2: {
                 title: "1-3 (2) 설명하는 글 쓰기", subtitle: "중학 2학년 읽기-쓰기",
